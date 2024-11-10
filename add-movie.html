@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar Filme</title>
+    <style>
+        body {
+            background-color: #141414;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .form-container, .movie-container {
+            background-color: #222;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            width: 300px;
+        }
+
+        .form-container input, .form-container button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        .form-container button {
+            background-color: #FF0000;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .movie-item {
+            background-color: #333;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Adicionar Filme</h2>
+        <input type="text" id="title" placeholder="Título" required>
+        <input type="text" id="genre" placeholder="Gênero" required>
+        <button onclick="addMovie()">Adicionar Filme</button>
+    </div>
+
+    <div class="movie-container">
+        <h2>Seus Filmes</h2>
+        <div id="movie-list"></div>
+    </div>
+
+    <script>
+        function addMovie() {
+            const title = document.getElementById('title').value;
+            const genre = document.getElementById('genre').value;
+
+            if (!title || !genre) {
+                alert("Por favor, preencha todos os campos.");
+                return;
+            }
+
+            document.getElementById('title').value = '';
+            document.getElementById('genre').value = '';
+
+            const movieItem = document.createElement('div');
+            movieItem.classList.add('movie-item');
+            movieItem.innerHTML = `<h3>${title}</h3><p>Gênero: ${genre}</p>`;
+
+            document.getElementById('movie-list').appendChild(movieItem);
+        }
+    </script>
+</body>
+</html>
